@@ -3,9 +3,13 @@
 set -e
 
 REPO_DIR="${PWD}"
-COMMIT_MSG="${1:-deploy: $(date '+%Y-%m-%d %H:%M:%S')}"
-REMOTE_URL="https://vanvj00003@github.com/vanvj00003/my-blog.git"
-GH_PAGES_BRANCH="gh-pages"
+GH_TOKEN="${GH_TOKEN:-}"
+if [ -z "$GH_TOKEN" ]; then
+    echo "错误: GH_TOKEN 环境变量未设置"
+    echo "使用方法: GH_TOKEN=your_token bash deploy.sh"
+    exit 1
+fi
+REMOTE_URL="https://vanvj00003:${GH_TOKEN}@github.com/vanvj00003/my-blog.git"
 
 echo "=========================================="
 echo "发布博客到 https://vanvj00003.github.io/my-blog/"
@@ -14,21 +18,34 @@ echo "=========================================="
 cd "$REPO_DIR"
 
 # Clean build
-echo "[1/4] 清理旧构建..."
+echo "[1/3] 清理旧构建..."
 rm -rf public resources/_gen
 
 # Build
-echo "[2/4] 构建博客..."
+echo "[2/3] 构建博客..."
 hugo --minify
 
-# Add changes
-echo "[3/4] 提交更改..."
-git add -A
-git commit -m "$COMMIT_MSG" || echo "没有更改需要提交"
+# Deploy to gh-pages
+echo "[3/3] 推送到 gh-pages..."
 
-# Push to gh-pages
-echo "[4/4] 推送到 gh-pages..."
-git push ${REMOTE_URL:-origin} ${GH_PAGES_BRANCH}
+# Create a temporary directory for gh-pages
+TEMP_DIR=$(mktemp -d)
+trap "rm -rf $TEMP_DIR" EXIT
+
+# Clone gh-pages branch
+git clone -b gh-pages "$REMOTE_URL" "$TEMP_DIR" 2>/dev/null || git clone "$REMOTE_URL" "$TEMP_DIR"
+
+# Remove all files except .git
+cd "$TEMP_DIR"
+find . -maxdepth 1 ! -name ".git" -delete
+
+# Copy new files
+cp -r "$REPO_DIR/public/"* "$TEMP_DIR/"
+
+# Commit and push
+git add -A
+git commit -m "Deploy: $(date '+%Y-%m-%d %H:%M:%S')" || true
+git push "$REMOTE_URL" gh-pages
 
 echo "=========================================="
 echo "发布完成！"
