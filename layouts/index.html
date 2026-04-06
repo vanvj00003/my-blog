@@ -8,12 +8,15 @@
       <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
       <div class="post-meta">
         <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+        {{- if .Params.author }} by {{ .Params.author }}{{- end }}
       </div>
       {{- if .Summary -}}
-      <p>{{ .Summary }}</p>
+      <p>{{ .Summary | truncate 200 }}</p>
       {{- end -}}
+      <a href="{{ .RelPermalink }}" class="read-more">阅读全文 →</a>
     </article>
     {{- end -}}
   </div>
 </div>
 {{- end -}}
+

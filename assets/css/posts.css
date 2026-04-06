@@ -1,19 +1,25 @@
 .posts-list {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 2rem;
+  margin-top: 2rem;
 }
 
 .post-item {
-  padding: 1rem;
-  border-left: 3px solid var(--primary-color, #004ed0);
+  padding: 1.5rem;
+  border-left: 4px solid var(--primary-color, #004ed0);
   background-color: var(--body-background, #fafafa);
   border-radius: 4px;
+  transition: box-shadow 0.2s;
+}
+
+.post-item:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .post-item h3 {
   margin: 0 0 0.5rem 0;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 }
 
 .post-item h3 a {
@@ -28,10 +34,92 @@
 .post-item .post-meta {
   font-size: 0.9rem;
   color: #666;
+  margin-bottom: 0.8rem;
 }
 
 .post-item p {
-  margin: 0.5rem 0 0 0;
+  margin: 0.8rem 0 0.8rem 0;
   color: #555;
   line-height: 1.6;
+}
+
+.post-item .read-more {
+  display: inline-block;
+  color: var(--primary-color, #004ed0);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.post-item .read-more:hover {
+  text-decoration: underline;
+}
+
+/* Article page styles */
+.post-article {
+  margin: 2rem 0;
+}
+
+.post-article h1 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.post-article .post-meta {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.post-article .post-content {
+  line-height: 1.8;
+  color: #333;
+}
+
+.post-article .post-tags {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+}
+
+.post-article .tag {
+  display: inline-block;
+  margin-right: 0.5rem;
+  padding: 0.3rem 0.8rem;
+  background-color: #f0f0f0;
+  border-radius: 3px;
+  text-decoration: none;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.post-article .tag:hover {
+  background-color: var(--primary-color, #004ed0);
+  color: white;
+}
+
+.post-nav {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+}
+
+.post-nav .prev,
+.post-nav .next {
+  flex: 1;
+}
+
+.post-nav .next {
+  text-align: right;
+}
+
+.post-nav a {
+  text-decoration: none;
+  color: var(--primary-color, #004ed0);
+  font-weight: 500;
+}
+
+.post-nav a:hover {
+  text-decoration: underline;
 }

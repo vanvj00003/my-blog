@@ -1,0 +1,38 @@
+{{- define "main" -}}
+<div class="markdown">
+  <article class="post-article">
+    <h1>{{ .Title }}</h1>
+    <div class="post-meta">
+      <span class="post-date">
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+      </span>
+      {{- if .Params.author }}
+      <span class="post-author">{{ .Params.author }}</span>
+      {{- end }}
+    </div>
+    <div class="post-content">
+      {{- .Content -}}
+    </div>
+    {{- if .Params.tags }}
+    <div class="post-tags">
+      {{- range .Params.tags }}
+      <a href="{{ $.Site.BaseURL }}tags/{{ . | urlize }}" class="tag">#{{ . }}</a>
+      {{- end }}
+    </div>
+    {{- end }}
+  </article>
+  
+  <div class="post-nav">
+    {{- with .PrevInSection }}
+    <div class="prev">
+      <a href="{{ .RelPermalink }}">← {{ .Title }}</a>
+    </div>
+    {{- end }}
+    {{- with .NextInSection }}
+    <div class="next">
+      <a href="{{ .RelPermalink }}">{{ .Title }} →</a>
+    </div>
+    {{- end }}
+  </div>
+</div>
+{{- end -}}
