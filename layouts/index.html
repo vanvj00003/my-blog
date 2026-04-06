@@ -1,0 +1,19 @@
+{{- define "main" -}}
+<div class="markdown">
+  {{- .Content -}}
+  <h2>最新文章</h2>
+  <div class="posts-list">
+    {{- range first 20 (where .Site.RegularPages "Section" "posts") -}}
+    <article class="post-item">
+      <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+      <div class="post-meta">
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+      </div>
+      {{- if .Summary -}}
+      <p>{{ .Summary }}</p>
+      {{- end -}}
+    </article>
+    {{- end -}}
+  </div>
+</div>
+{{- end -}}

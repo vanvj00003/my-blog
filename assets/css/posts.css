@@ -1,0 +1,37 @@
+.posts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.post-item {
+  padding: 1rem;
+  border-left: 3px solid var(--primary-color, #004ed0);
+  background-color: var(--body-background, #fafafa);
+  border-radius: 4px;
+}
+
+.post-item h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.2rem;
+}
+
+.post-item h3 a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.post-item h3 a:hover {
+  color: var(--primary-color, #004ed0);
+}
+
+.post-item .post-meta {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.post-item p {
+  margin: 0.5rem 0 0 0;
+  color: #555;
+  line-height: 1.6;
+}
