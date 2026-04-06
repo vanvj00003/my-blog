@@ -1,7 +1,7 @@
 baseURL = 'https://vanvj00002.github.io/monkvan/'
 languageCode = 'zh-CN'
 title = 'monkvan'
-theme = "book"
+theme = ["fixit"]
 
 defaultContentLanguage = "zh-cn"
 hasCJKLanguage = true
@@ -11,6 +11,7 @@ enableRobotsTXT = true
 enableGitInfo = true
 
 [params]
+  version = "0.3.X"
   since = 2025
   description = "老梵的个人随笔和思考"
   
