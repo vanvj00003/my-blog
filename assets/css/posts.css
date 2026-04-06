@@ -123,3 +123,61 @@
 .post-nav a:hover {
   text-decoration: underline;
 }
+
+/* Article list in sidebar */
+.book-menu-articles {
+  padding: 1rem 0;
+  margin-top: 1.5rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.book-menu-articles h3 {
+  margin: 0 0 1rem 0;
+  padding: 0 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.6);
+  letter-spacing: 0.5px;
+}
+
+.book-menu-articles ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.book-menu-articles li {
+  padding: 0;
+  margin: 0;
+}
+
+.article-link {
+  display: block;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: inherit;
+  font-size: 0.9rem;
+  transition: background-color 0.2s, color 0.2s;
+  border-left: 3px solid transparent;
+}
+
+.article-link:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: var(--primary-color, #004ed0);
+  border-left-color: var(--primary-color, #004ed0);
+}
+
+.article-link.active {
+  background-color: rgba(0, 0, 0, 0.08);
+  color: var(--primary-color, #004ed0);
+  border-left-color: var(--primary-color, #004ed0);
+  font-weight: 500;
+}
+
+.article-date {
+  padding: 0 1rem;
+  font-size: 0.8rem;
+  color: rgba(0, 0, 0, 0.4);
+  margin-top: 0.2rem;
+}
