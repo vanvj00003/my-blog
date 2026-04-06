@@ -15,10 +15,13 @@ jobs:
         run: |
           git config --global --remove-section submodule.gh-pages 2>/dev/null || true
           git config --global --remove-section remote.gh-pages 2>/dev/null || true
-      - uses: actions/checkout@v4
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+      - uses: actions/checkout@v4.2.0
         with:
           submodules: false
-      - uses: peaceiris/actions-hugo@v2
+          fetch-depth: 0
+      - uses: peaceiris/actions-hugo@v3
         with:
           hugo-version: '0.159.0'
       - name: Build
@@ -31,3 +34,4 @@ jobs:
           publish_branch: gh-pages
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
+
