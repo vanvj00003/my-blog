@@ -1,7 +1,7 @@
 {
 	"version": 3,
 	"file": "config.min.css",
-	"sourceRoot": "/Users/vanvj/my-blog",
+	"sourceRoot": "/Users/vanvj00003/my-blog.worktrees/copilot-worktree-2026-04-06T13-55-12",
 	"sources": [
 		"themes/fixit/assets/css/config.template.scss",
 		"themes/fixit/assets/css/_variables.scss",
