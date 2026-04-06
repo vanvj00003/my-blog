@@ -174,10 +174,3 @@
   border-left-color: var(--primary-color, #004ed0);
   font-weight: 500;
 }
-
-.article-date {
-  padding: 0 1rem;
-  font-size: 0.8rem;
-  color: rgba(0, 0, 0, 0.4);
-  margin-top: 0.2rem;
-}

@@ -3,7 +3,8 @@
   {{- .Content -}}
   <h2>最新文章</h2>
   <div class="posts-list">
-    {{- range first 20 (where .Site.RegularPages "Section" "posts") -}}
+    {{- $pages := where .Site.RegularPages "Section" "posts" -}}
+    {{- range $pages.ByDate.Reverse -}}
     <article class="post-item">
       <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
       <div class="post-meta">
