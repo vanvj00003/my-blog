@@ -11,6 +11,10 @@ jobs:
     permissions:
       contents: write
     steps:
+      - name: Clean git config
+        run: |
+          git config --global --remove-section submodule.gh-pages 2>/dev/null || true
+          git config --global --remove-section remote.gh-pages 2>/dev/null || true
       - uses: actions/checkout@v4
         with:
           submodules: false
